@@ -1,14 +1,15 @@
-package tierraMedia;
+package tierraMedia.servicios;
 
 import org.junit.Test;
+import tierraMedia.atracciones.Atraccion;
+import tierraMedia.Usuario;
 import tierraMedia.promociones.Promocion;
-import tierraMedia.servicios.ManejadorDeArchivos;
 
 import java.util.List;
 
 public class ManejadorDeArchivosTest {
 
-    //Los test deberían hacerse de otra forma
+
     @Test
     public void leerUsuariosTest() {
         System.out.println("---Usuarios---");
@@ -32,7 +33,7 @@ public class ManejadorDeArchivosTest {
             System.out.println("Costo: " + atraccion.getCosto());
             System.out.println("Tipo: " + atraccion.getTipo());
             System.out.println("Duracion: " + atraccion.getTiempo());
-            System.out.println("Cupo diario: " + atraccion.getCupoDiario());
+            System.out.println("Cupo diario: " + atraccion.getCupoDisponible());
 
             System.out.println();
         }
@@ -47,14 +48,14 @@ public class ManejadorDeArchivosTest {
 
         for (Promocion promocion : promociones) {
             System.out.println("Nombre: " + promocion.getNombre());
-            System.out.println("Tipo: " + promocion.getTipoAtraccion());
+            System.out.println("Tipo: " + promocion.getTipo());
             System.out.println("Tipo promo: " + promocion.getClass());
             for (int i = 0; i < promocion.getAtracciones().size(); i++) {
                 System.out.println(">Atraccion:");
                 System.out.println("Nombre: " + promocion.getAtracciones().get(i).getNombre());
                 System.out.println("Tiempo: " + promocion.getAtracciones().get(i).getTiempo());
                 System.out.println("Costo: " + promocion.getAtracciones().get(i).getCosto());
-                System.out.println("Cupo diario: " + promocion.getAtracciones().get(i).getCupoDiario());
+                System.out.println("Cupo diario: " + promocion.getAtracciones().get(i).getCupoDisponible());
             }
             System.out.println("---------------");
 

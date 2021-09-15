@@ -1,7 +1,7 @@
 package tierraMedia.promociones;
 
-import tierraMedia.Atraccion;
-import tierraMedia.TipoAtraccion;
+import tierraMedia.atracciones.Atraccion;
+import tierraMedia.atracciones.TipoAtraccion;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ public class PromoAbsoluta extends Promocion {
     }
 
     @Override
-    public int getCosto() {
+    public Integer getCosto() {
         return super.getCosto() - this.descuento;
     }
 

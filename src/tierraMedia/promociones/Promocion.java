@@ -1,8 +1,8 @@
 package tierraMedia.promociones;
 
-import tierraMedia.Atraccion;
+import tierraMedia.atracciones.Atraccion;
 import tierraMedia.Producto;
-import tierraMedia.TipoAtraccion;
+import tierraMedia.atracciones.TipoAtraccion;
 
 import java.util.List;
 
@@ -11,14 +11,12 @@ public abstract class Promocion implements Producto, Comparable<Promocion> {
     protected List<Atraccion> atracciones;
     protected TipoAtraccion tipoAtraccion;
 
-
     public Promocion(String nombre, TipoAtraccion tipoAtraccion, List<Atraccion> atracciones) {
         this.nombre = nombre;
         this.tipoAtraccion = tipoAtraccion;
         this.atracciones = atracciones;
     }
 
-    //TODO Los getter estan públicos para poder testear pero no está bien eso?
     public String getNombre() {
         return nombre;
     }
@@ -27,13 +25,19 @@ public abstract class Promocion implements Producto, Comparable<Promocion> {
         return atracciones;
     }
 
-    public TipoAtraccion getTipoAtraccion() {
+    public List<Atraccion> getAtraccionesTotales() {
+        return atracciones;
+    }
+
+    public TipoAtraccion getTipo() {
         return tipoAtraccion;
     }
 
-    @Override
-    public int compareTo(Promocion otraPromo) {
-        return this.nombre.compareTo(otraPromo.nombre);
+    public int compareTo(Promocion otra) {
+        if (this.getCosto().compareTo(otra.getCosto()) == 0){
+            return -this.getTiempo().compareTo(otra.getTiempo());
+        }
+        return -this.getCosto().compareTo(otra.getCosto());
     }
 
     public Double getTiempo() {
@@ -44,7 +48,7 @@ public abstract class Promocion implements Producto, Comparable<Promocion> {
         return total;
     }
 
-    public int getCosto() {
+    public Integer getCosto() {
         int total = 0;
 
         for (int i = 0; i < this.atracciones.size(); i++) {
@@ -52,5 +56,20 @@ public abstract class Promocion implements Producto, Comparable<Promocion> {
         }
         return total;
     }
+
+    public boolean tieneCupo() {
+        boolean hay = true;
+        for(Atraccion atraccion:atracciones){
+            hay &= atraccion.tieneCupo();
+        }
+        return hay;
+    }
+
+    public void actualizarCupo() {
+        for(Atraccion atraccion:atracciones){
+            atraccion.actualizarCupo();
+        }
+    }
+
 
 }

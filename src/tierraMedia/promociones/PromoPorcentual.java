@@ -1,7 +1,7 @@
 package tierraMedia.promociones;
 
-import tierraMedia.Atraccion;
-import tierraMedia.TipoAtraccion;
+import tierraMedia.atracciones.Atraccion;
+import tierraMedia.atracciones.TipoAtraccion;
 
 import java.util.List;
 
@@ -14,9 +14,9 @@ public class PromoPorcentual extends Promocion {
     }
 
     @Override
-    public int getCosto() {
-
-        return (int) Math.ceil(super.getCosto() * (1 - this.porcentaje / 100));
+    public Integer getCosto() {
+        return (int) Math.ceil(super.getCosto() * (1 - this.porcentaje/100.0));
     }
+
 
 }
