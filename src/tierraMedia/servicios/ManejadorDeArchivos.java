@@ -12,7 +12,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class ManejadorDeArchivos {
+public class ManejadorDeArchivos {
 
     public static List<Usuario> cargarUsuarios(String path) {
         FileReader fr = null;
